@@ -9,6 +9,7 @@ wordcount={}
 
 for line in inFile:
 	if definition == 0:
+		# Is the line the beginning of a definition, noted by 'Defn:' or '#. '
 		definition_regex=re.compile('Defn:|^\d\. ')
 		definition = 1
 	elif definition == 1:
@@ -39,6 +40,6 @@ for line in inFile:
 	
 wordcount = sorted(wordcount.items(), key=operator.itemgetter(1),reverse=True)
 
-#limit to first 100 items
+#limit output to first 100 items
 print wordcount[:99]	
 inFile.close()
